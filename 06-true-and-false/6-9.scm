@@ -17,3 +17,10 @@
   (sentence
     quant
     (if (> quant 1) (plural obj) obj)))
+
+；another version of this-many function
+(define (this-may quant obj)
+  (sentence quant
+    (cond ((= quant 1) obj)
+          ((> quant 1) (plural obj))
+          (else "wrong quantity"))))
