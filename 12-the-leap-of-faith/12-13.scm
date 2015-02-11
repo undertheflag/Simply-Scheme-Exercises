@@ -45,7 +45,7 @@
         (cond ((and (equal? (last wd) 'y)
                     (vowel? (last (bl wd)))) (word wd 's))
               ((equal? (last wd) 'y) (word (bl wd) 'ies))
-              ((equal? (last wd) 's) wd)
+              ((equal? (last wd) 's) （word wd 'es))
               (else (word wd 's))))
       (se num wd))))
 
