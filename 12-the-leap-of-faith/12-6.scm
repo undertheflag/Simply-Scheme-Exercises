@@ -6,11 +6,11 @@
 
 (define (base-grade g)
   (let ((grade (first g)))
-    (cond ((equal? grade 'a) 4)
-          ((equal? grade 'b) 3)
-          ((equal? grade 'c) 2)
-          ((equal? grade 'd) 1)
-          ((equal? grade 'f) 0)
+    (cond ((equal? grade 'A) 4)
+          ((equal? grade 'B) 3)
+          ((equal? grade 'C) 2)
+          ((equal? grade 'D) 1)
+          ((equal? grade 'E) 0)
           (else 0))))
 
 (define (grade-modifier g)
