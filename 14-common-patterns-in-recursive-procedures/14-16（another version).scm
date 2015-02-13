@@ -1,0 +1,10 @@
+(define (vowel? letter)
+  (member? letter 'aeiou))
+(define (syllables wd)
+  (if (= 1 (count wd))
+      (if (not (vowel? wd))
+          0
+          1)
+      (if (and (vowel? (first wd)) (not (vowel? (first (bf wd)))))
+          (+ 1 (syllables (bf (bf wd))))
+          (syllables (bf wd)))))
