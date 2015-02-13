@@ -1,0 +1,10 @@
+(define (insert n sent)
+  (if (empty? sent)
+      (se n)
+      (if (<= n (first sent))
+          (se n sent)
+          (se (first sent) (insert n (bf sent))))))
+(define (merge sent1 sent2)
+  (if (empty? sent1)
+      sent2
+      (merge (bf sent1) (insert (first sent1) sent2))))
