@@ -1,0 +1,32 @@
+(define (num-to-letters n)
+  (cond ((= n 2) '(a b c))
+        ((= n 3) '(d e f))
+        ((= n 4) '(g h i))
+        ((= n 5) '(j k l))
+        ((= n 6) '(m n o))
+        ((= n 7) '(p q r s))
+        ((= n 8) '(t u v))
+        ((= n 9) '(w x y z))
+        ((= n 0) '(0))
+        (else '(1))))
+        
+(define (helper1 letter ls)
+  (every (lambda (x) (word letter x)) ls))
+  
+(define (helper2 ls letters)
+  (every (lambda (x) (helper1 x ls)) letters))
+  
+(define (phone-letters phone)
+  (if (= (count phone) 1)
+      (num-to-letters phone)
+      (helper2 (phone-letters (bf phone)) (num-to-letters (first phone)))))
+      
+(define (rm-repeated sent)
+  (if (<= (count sent) 1)
+      sent
+      (if (member? (first sent) (bf sent))
+          (rm-repeated (bf sent))
+          (se (first sent) (rm-repeated (bf sent))))))
+          
+(define (phone-spell num)
+  (rm-repeated (phone-letters num)))
