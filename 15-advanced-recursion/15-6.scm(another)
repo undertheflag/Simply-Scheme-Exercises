@@ -1,0 +1,14 @@
+(define (first-two sent)
+  (se (first  sent)
+      (first (bf sent))))
+(define (reverse sent)
+  (if (<= (count sent) 3)
+      sent
+      (let ((ft (first-two sent))
+            (l (last sent))
+            (rest (bf (bf (bl sent)))))       
+        (se  (reverse rest) 'that l ft))))       
+(define (unscramble sent)  ;the sent munst begin with "this is ..."
+  (if (empty? sent)
+      sent
+      (se 'this 'is (reverse (bf (bf sent))))))
