@@ -1,0 +1,45 @@
+(define (three-digits-group idx)
+  (if (= idx 0)
+      '()
+      (item idx '(thousand million billion
+                           trillion quadrillion 
+                           quintillion sextillion 
+                           septillion octillion 
+                           nonillion decillion))))
+
+(define (one-to-nineteen idx)
+  (if (zero? idx)
+      '()
+      (item idx '(one two three four five
+                      six seven eight nine ten eleven 
+                      twelve thirteen fourteen fifteen 
+                      sixteen seventeen eighteen nineteen))))
+
+(define (three-digits-name num)
+  (cond ((> num 99) (se (one-to-nineteen (first num)) 'hundred (three-digits-name (bf num))))
+        ((> num 19) (se (item (- (first num) 1) 
+                              '(twenty thirty fourty fifty sixty seventy eighty ninety))
+                        (one-to-nineteen (bf num))))
+        ((zero? 0) '(zero))
+        (else (one-to-nineteen num))))
+        
+(define (last-three num)
+  (if (<= (count num) 3)
+      num
+      (word (last (bl (bl num)))
+            (last (bl num)) 
+            (last num))))
+(define (rm-last-three num)
+      (bl (bl (bl num))))
+      
+(define (number-name-helper digit num)
+  (if (<= (count num) 3)
+      (three-digits-name num)
+      (se (number-name-helper (+ 1 digit) (rm-last-three num))
+          (three-digits-group (if ( > (remainder num 1000) 0)
+                                  (+ digit 1)
+                                  0))
+          (three-digits-name (last-three num)))))
+          
+(define (number-name num)
+  (number-name-helper 0 num))
